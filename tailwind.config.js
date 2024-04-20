@@ -8,9 +8,9 @@ module.exports = {
                 "theme-steel": "#3a6383",
                 "theme-slate": "#2f4253",
                 "theme-prussian": "#15212d",
-                "theme-bronze": "#d09a6e"
-            }
-        }
+                "theme-bronze": "#d09a6e",
+            },
+        },
     },
     plugins: [],
-}
+};
