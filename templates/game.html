@@ -1,4 +1,14 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+{% block static %}
+    <script src="/static/js/game.js"></script>
+{% endblock %}
 {% block content %}
-{{ data }}
+    <div id="data_store" data-json="{{ data }}"></div>
+    <div class="flex h-full w-full flex-col items-center justify-center">
+        <div class="relative h-[75vh] w-[75vw] bg-white">
+            <div id="crab" class="absolute bottom-0 left-0 w-50 h-50">
+                <img src="/static/assets/crab.png">
+            </div>
+        </div>
+    </div>
 {% endblock %}

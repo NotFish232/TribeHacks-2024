@@ -5,11 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Forge</title>
-        <link rel="stylesheet" href="./static/css/tailwind.css" />
-        <link rel="icon" href="./static/favicon.png" type="image/x-icon" />
-        {% block static %}{% endblock %}
+        <link rel="stylesheet" href="/static/css/tailwind.css" />
+        <script src="/static/js/jquery.js"></script>
+        <link rel="icon" href="/static/assets/favicon.png" type="image/x-icon" />
+        {% block static %}
+        {% endblock %}
     </head>
-    <body class="h-full w-full bg-theme-gray">
-        {% include "navbar.html" %} {% block content %}{% endblock %}
+    <body class="h-[80vh] w-full bg-theme-gray">
+        {% include "navbar.html" %}
+        {% block content %}
+        {% endblock %}
     </body>
 </html>

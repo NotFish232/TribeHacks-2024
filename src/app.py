@@ -13,7 +13,7 @@ def main_page() -> str:
 @app.route("/game", methods=["GET"])
 def game_page() -> str:
     j = json.load(open("demo.json"))
-    return render_template("game.html", data=j)
+    return render_template("game.html", data=json.dumps(j))
 
 
 if __name__ == "__main__":

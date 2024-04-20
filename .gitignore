@@ -3,3 +3,4 @@ venv/
 static/css/tailwind.css
 .env
 *.wav
+jsconfig.json
