@@ -4,17 +4,74 @@
 {% endblock %}
 {% block content %}
     <div id="data_store" data-json="{{ data }}"></div>
-    <div class="flex h-full w-full flex-col items-center justify-center">
-        <div class="relative h-[75vh] w-[75vw] bg-white">
-            <div
-                id="lives"
-                class="absolute right-2 top-1 flex flex-row space-x-2"></div>
-            <div id="hammers"></div>
-            <div
-                id="crab"
-                class="absolute left-[50%] top-[50%] h-48 w-48 -translate-x-[50%]">
-                <img src="/static/assets/crab.png" />
+    <div class="flex h-full w-full flex-row items-center justify-center">
+        <div class="flex h-full w-full flex-col">
+            <div class="h-[5vh] w-full bg-theme-steel"></div>
+            <div class="flex h-[95vh] w-full flex-row">
+                <div class="relative h-[95vh] w-[50vw]">
+                    <img
+                        class="image-fill absolute h-[95vh] w-[50vw]"
+                        src="/static/assets/background.png" />
+
+                    <div
+                        id="lives"
+                        class="absolute left-2 top-1 flex flex-row space-x-2"></div>
+                    <div id="hammers" class="absolute"></div>
+                    <div
+                        id="crab"
+                        class="absolute left-[50%] top-[72%] h-64 w-64 -translate-x-[50%]">
+                        <img src="/static/assets/crab_idle.gif" />
+                    </div>
+                    <div id="streak" class="absolute bottom-1 left-1 text-3xl">
+                        Streak: 0
+                    </div>
+                </div>
+                <div
+                    class="flex h-full w-[47vw] flex-col items-center space-y-6 bg-theme-prussian">
+                    <div
+                        id="question"
+                        class="mb-4 mt-6 w-2/3 rounded-2xl bg-theme-slate px-12 py-8 text-center text-2xl font-semibold text-theme-artic">
+                        placeholder question
+                    </div>
+                    <div
+                        id="full_card_1"
+                        class="flex w-2/3 cursor-pointer flex-row rounded-3xl border-8 border-theme-artic bg-theme-prussian px-12 py-8 hover:brightness-125">
+                        <div class="text-6xl font-bold text-theme-steel">A</div>
+
+                        <div id="card_1" class="ml-8 text-theme-artic">
+                            placeholder card 1
+                        </div>
+                    </div>
+                    <div
+                        id="full_card_2"
+                        class="flex w-2/3 cursor-pointer flex-row rounded-3xl border-8 border-theme-artic bg-theme-prussian px-12 py-8 hover:brightness-125">
+                        <div class="text-6xl font-bold text-theme-steel">B</div>
+
+                        <div id="card_2" class="ml-8 text-theme-artic">
+                            placeholder card 2
+                        </div>
+                    </div>
+                    <div
+                        id="full_card_3"
+                        class="flex w-2/3 cursor-pointer flex-row rounded-3xl border-8 border-theme-artic bg-theme-prussian px-12 py-8 hover:brightness-125">
+                        <div class="text-6xl font-bold text-theme-steel">C</div>
+
+                        <div id="card_3" class="ml-8 text-theme-artic">
+                            placeholder card 3
+                        </div>
+                    </div>
+                    <div
+                        id="full_card_4"
+                        class="flex w-2/3 cursor-pointer flex-row rounded-3xl border-8 border-theme-artic bg-theme-prussian px-12 py-8 hover:brightness-125">
+                        <div class="text-6xl font-bold text-theme-steel">D</div>
+
+                        <div id="card_4" class="ml-8 text-theme-artic">
+                            placeholder card 4
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="h-full w-[3vw] bg-theme-bronze"></div>
     </div>
 {% endblock %}

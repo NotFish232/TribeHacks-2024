@@ -2,19 +2,20 @@
 {% block content %}
 <div class="bg-cover bg-center h-[94vh]" style="background-image:url('static/assets/Website_P1_Blank.png')">
     <img class="h-[15vh] ml-3"  src="{{url_for('static', filename='assets/Logo_Full.png')}}">
-    <div class="container mx-auto flex items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-3/5 bg-theme-artic grid-flow-*" style="margin: auto; margin-top:3%;">
-        <div class="w-4/5vw h-1/2">
-            <input class="mx-8 border-8 border-theme-slate rounded-3xl w-dvw h-dvh align-text-top text-3xl placeholder-theme-steel text-theme-slate" placeholder="Enter lecture text here...">
+    <div class="container mx-auto flex flex-col items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-3/5 bg-theme-artic grid-flow-*" style="margin: auto; margin-top:3%;">
+         
+        <input class="mx-8 mt-16 border-8 border-theme-slate rounded-3xl w-4/5 h-1/2 align-text-top text-3xl placeholder-theme-steel text-theme-slate" placeholder="Enter lecture text here...">
 
-            </input>
-        </div>
+        </input>
         <br>
         <h1>----------OR----------</h1>
         <br>
-        <div class="mt-4 w-full h-1/4 align-top" style="position: relative;">
+        <!-- <input type = "file" title=" " class="bg-theme-artic  mt-4 border-8 border-theme-slate rounded-3xl w-3/5 h-1/6 text-center text-4xl flex items-center justify-center" style="position: relative;"/> -->
             <!-- insert like the file upload button here -->
-            <h1>File upload</h1>
-        </div>
+            
+            <!-- <img class="-ml-5 mr-9 h-[7vh] w-[7vh]"  src="{{url_for('static', filename='assets/Attachment_Icon.png')}}"> -->
+        
+<input accept=".txt, .wav" class="text-3xl block w-3/5 h-1/6 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 
     </div>
     
