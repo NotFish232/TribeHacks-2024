@@ -72,7 +72,7 @@ $(function () {
             let [hammer_element, x, y] = hammers[i];
             hammer_element.css("transform", `translate(${x}px, ${y}px)`);
 
-            hammers[i][2] += 3;
+            hammers[i][2] += 2;
         }
     }
 
