@@ -1,7 +1,7 @@
 import speech_recognition as sr # type: ignore
 import os 
 from pydub import AudioSegment
-import time
+# import time
 
 def chunked_audio_to_text(audio_name) -> str:
     r = sr.Recognizer()
