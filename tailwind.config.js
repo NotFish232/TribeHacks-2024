@@ -4,9 +4,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                "theme-gray": "#15212d",
-                "theme-bronze": "#b38764",
-                "theme-accent": "#4a6e8d"
+                "theme-artic": "#b0c0c7",
+                "theme-steel": "#3a6383",
+                "theme-slate": "#2f4253",
+                "theme-prussian": "#15212d",
+                "theme-bronze": "#d09a6e"
             }
         }
     },
