@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="bg-cover bg-center h-[92vh]" style="background-image:url('static/assets/Website_P1_Blank.png')">
-    <div class="flex items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-2/5 bg-theme-artic">
-        Hello
+<div class="bg-cover bg-center h-[94vh]" style="background-image:url('static/assets/Website_P1_Blank.png')">
+    <img class="h-[15vh] ml-3"  src="{{url_for('static', filename='assets/Logo_Full.png')}}">
+    <div class="container mx-auto flex items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-3/5 bg-theme-artic grid-flow-*" style="margin: auto; margin-top:3%;">
+        <div class="w-4/5vw h-1/2">
+            <input class="mx-8 border-8 border-theme-slate rounded-3xl w-dvw h-dvh align-text-top text-3xl placeholder-theme-steel text-theme-slate" placeholder="Enter lecture text here...">
+
+            </input>
+        </div>
+        <br>
+        <h1>----------OR----------</h1>
+        <br>
+        <div class="mt-4 w-full h-1/4 align-top" style="position: relative;">
+            <!-- insert like the file upload button here -->
+            <h1>File upload</h1>
+        </div>
+
     </div>
+    
 </div>
-<div class="h-[8vh] w-full bg-theme-bronze"></div>
+<div class="h-[6vh] w-full bg-theme-bronze"></div>
 {% endblock %}
