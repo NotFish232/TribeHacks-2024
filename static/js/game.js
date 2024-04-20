@@ -122,6 +122,11 @@ $(function () {
 
     function handle_game_over() {
         crab_element.find("img")[0].src = "/static/assets/explosion.png";
+
+        setTimeout((e) => {
+            create_new_hammer();
+            set_next_question_set();
+        }, 500);
     }
 
     $("[id^=full_card_]").on("click", function (e) {
@@ -156,8 +161,6 @@ $(function () {
                 if (num_lives == 0) {
                     handle_game_over();
                 }
-                create_new_hammer();
-                set_next_question_set();
 
                 streak = 0;
                 streak_element.innerHTML = `Streak: ${streak}`;
