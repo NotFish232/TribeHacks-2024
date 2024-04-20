@@ -14,9 +14,9 @@ def audio_to_text(path) -> str:
 
     return transcription.text
 
-start = time.time()
-# text = audio_to_text("presentation.wav")
-text = audio_to_text("Brian Cox explains quantum mechanics in 60 seconds - BBC News.wav")
-print(text)
-print(text_to_keywords(text))
-print(time.time() - start)
+# start = time.time()
+# # text = audio_to_text("presentation.wav")
+# text = audio_to_text("Brian Cox explains quantum mechanics in 60 seconds - BBC News.wav")
+# print(text)
+# print(text_to_keywords(text))
+# print(time.time() - start)
