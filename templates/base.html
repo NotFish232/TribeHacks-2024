@@ -7,11 +7,9 @@
     <title>Forge</title>
     <link rel="stylesheet" href="./static/css/tailwind.css" />
     <link rel="icon" href="./static/favicon.png" type="image/x-icon" />
-    {% block static %}
-    {% endblock %}
+    {% block static %} {% endblock %}
   </head>
-  <body>
-    {% block content %}
-    {% endblock %}
+  <body class="bg-theme-gray w-full h-full">
+    {% include "navbar.html" %} {% block content %} {% endblock %}
   </body>
 </html>
