@@ -1,4 +1,4 @@
-import speech_recognition as sr
+import speech_recognition as sr # type: ignore
 
 def audio_to_text(audio_name) -> str:
     r = sr.Recognizer()
