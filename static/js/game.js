@@ -12,13 +12,21 @@ $(function () {
         let hammer_element = $(
             `<div class="left-[50%] top-[20%] absolute h-20 w-20"><img src="/static/assets/hammer.png"></div>`,
         );
-        hammers.push(hammers_element.find("div").length);
+    
+        let x = (Math.random() - 0.5 ) * 500;
+        let y = 0;
+
+        hammers.push([hammer_element, x, y]);
         hammers_element.append(hammer_element);
+
     }
 
     function update_hammer_locations() {
-        for (let hammer of hammers) {
-            console.log(hammer);
+        for (let i = 0; i < hammers.length; ++i) {
+            let [hammer_element, x, y] = hammers[i];
+            hammer_element.css("transform", `translate(${x}px, ${y}px)`);
+
+            hammers[i][2] += 5;
         }
     }
 
@@ -39,9 +47,8 @@ $(function () {
 
     update_displayed_lives();
 
-    for (let i = 0; i < 3; ++i) {
-        create_new_hammer();
-    }
+    create_new_hammer();
+    
 
     let game_interval = setInterval(game_loop, 50);
 });
