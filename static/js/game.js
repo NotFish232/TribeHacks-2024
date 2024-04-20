@@ -86,9 +86,9 @@ $(function () {
         let full_card_elements = $("[id^=full_card_]");
         for (let i = 0; i < 4; ++i) {
             if (question == question_set[i]) {
-                $(full_card_elements.get(i)).addClass("border-green-800");
+                $(full_card_elements.get(i)).addClass("!border-green-800");
             } else {
-                $(full_card_elements.get(i)).addClass("border-red-800");
+                $(full_card_elements.get(i)).addClass("!border-red-800");
             }
         }
 
@@ -164,6 +164,8 @@ $(function () {
 
                 streak = 0;
                 streak_element.innerHTML = `Streak: ${streak}`;
+
+                show_correct_answer();
             }
         }
 
