@@ -3,7 +3,7 @@ import json
 import os
 
 template_dir = os.path.abspath("./templates")
-app = Flask(__name__, template_folder="./templates/", static_url_path="/static/")
+app = Flask(__name__, template_folder="../templates/", static_folder="../static/")
 
 
 @app.route("/", methods=["GET"])
