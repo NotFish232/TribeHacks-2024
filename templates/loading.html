@@ -61,10 +61,10 @@
             }
         }
 
-        // fetch("/parse_text")
-        //     .then((v) => v.json())
-        //     .then((j) => {
-        //         window.location.href = "/game?" + jQuery.param(j);
-        //     });
+        fetch("/parse_text")
+            .then((v) => v.json())
+            .then((j) => {
+                window.location.href = "/game?" + jQuery.param(j);
+            });
     </script>
 {% endblock %}
