@@ -1,9 +1,6 @@
 # <center>Forge: An Educational Tool</center>
 ![](/static/assets/crab_idle.gif)
 
-<center>Level up your studying by playing interactive trivia games
-
-constructed straight from your lecture recordings and notes!</center>
 
 ### Inspiration
 
