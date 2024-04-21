@@ -10,7 +10,10 @@ client = OpenAI()
 
 def text_to_keywords(text: str) -> dict[str, str]:
     prompt = (
-        "Turn this transcript below surrounded by {} into only a JSON dictionary with no other words, containing pairs with the keyword and the definition of that keyword in the format of {term1: definition1, term2: definition2} with the terms and definitions being strings, please provide at least 4 of these term:definition pairs"
+        """Turn this transcript below surrounded by {} into only a JSON dictionary with no other words, 
+        containing pairs with the keyword and the definition of that keyword in the format of {term1: definition1, term2: definition2} 
+        with the terms and definitions being strings, please provide at least 4 (but as many as you can, the more the better) 
+        of these term:definition pairs"""
         + "{"
         + text
         + "}"
