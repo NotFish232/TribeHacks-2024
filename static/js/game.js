@@ -9,10 +9,12 @@ $(function () {
     let streak_element = $("#streak")[0];
 
     let streak = 0;
+    let num_correct = 0;
 
     let question_set;
     let question;
     let answer;
+    let wrong_questions = [];
 
     let hammers = [];
 
@@ -24,9 +26,9 @@ $(function () {
         var rect2 = el2[0].getBoundingClientRect();
 
         return !(
-            rect1.top > rect2.bottom - 100 ||
+            rect1.top > rect2.bottom - 200||
             rect1.right < rect2.left ||
-            rect1.bottom < rect2.top + 100 ||
+            rect1.bottom < rect2.top + 200 ||
             rect1.left > rect2.right
         );
     }
@@ -96,8 +98,8 @@ $(function () {
             create_new_hammer();
             set_next_question_set();
 
-            full_card_elements.removeClass("border-green-800");
-            full_card_elements.removeClass("border-red-800");
+            full_card_elements.removeClass("!border-green-800");
+            full_card_elements.removeClass("!border-red-800");
         }, 1000);
     }
 
@@ -123,13 +125,28 @@ $(function () {
     function handle_game_over() {
         crab_element.find("img")[0].src = "/static/assets/explosion.png";
 
-        setTimeout((e) => {
-            create_new_hammer();
-            set_next_question_set();
-        }, 500);
+        let popup = new Popup({
+            title: "Game Over",
+            content: `
+                You lost!
+                You answer ${num_correct} terms correctly
+                ${wrong_questions.map(([k, v]) => `${k} => ${v}`).join("\n")}
+            `,
+            hideCallback: () => {
+                setTimeout(() => {
+                    crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+                    num_lives = max_lives;
+                    create_new_hammer();
+                    wrong_questions = [];
+                    set_next_question_set();
+                }, 500);
+            }
+        });
+        popup.show();
+
     }
 
-    $("[id^=full_card_]").on("click", function (e) {
+    $("[id^=full_card_]").on("click", function (_) {
         let idx = parseInt($(this).attr("id").slice(-1)) - 1;
 
         hammers[0][0].remove();
@@ -137,7 +154,9 @@ $(function () {
 
         if (question == question_set[idx]) {
             streak += 1;
+            num_correct += 1;
         } else {
+            wrong_questions.push([question, answer]);
             num_lives -= 1;
             if (num_lives == 0) {
                 handle_game_over();
@@ -145,7 +164,9 @@ $(function () {
             streak = 0;
         }
 
-        show_correct_answer();
+        if (num_lives != 0) {
+            show_correct_answer();
+        }
 
         streak_element.innerHTML = `Streak: ${streak}`;
     });
@@ -155,17 +176,20 @@ $(function () {
 
         for (let [hammer, _x, _y, _r] of hammers) {
             if (are_colliding(crab_element, hammer)) {
+                wrong_questions.push([question, answer]);
                 hammers[0][0].remove();
                 hammers = [];
                 num_lives -= 1;
                 if (num_lives == 0) {
                     handle_game_over();
+                } else {
+                    show_correct_answer();
                 }
 
                 streak = 0;
                 streak_element.innerHTML = `Streak: ${streak}`;
 
-                show_correct_answer();
+
             }
         }
 
@@ -176,5 +200,5 @@ $(function () {
 
     set_next_question_set();
 
-    let game_interval = setInterval(game_loop, 50);
+    let game_interval = setInterval(game_loop, 10);
 });
