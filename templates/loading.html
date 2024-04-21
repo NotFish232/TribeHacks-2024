@@ -7,15 +7,15 @@
             class="ml-3 h-[15vh]"
             src="{{ url_for('static', filename='assets/Logo_Full.png') }}" />
         <div
-            class="bg-theme-artic grid-flow-* container mx-auto flex h-3/4 w-2/5 flex-col items-center justify-center rounded-3xl border-0 border-indigo-50 bg-opacity-0"
+            class="bg-theme-artic grid-flow-* container mx-auto flex h-3/4 w-2/5 flex-col items-center justify-center rounded-3xl border-0 border-theme-bronze bg-opacity-0"
             style="margin: auto; margin-top:3%;">
             <img class="h-1/2" src="/static/assets/Crab_Loading.gif" />
             <div
                 class="flex  h-1/6 w-full flex-col items-center justify-center rounded-2xl bg-opacity-0">
                 <div
-                    class="bg-theme-artic relative h-1/3 w-full overflow-hidden rounded-xl">
+                    class="bg-opacity-0 border-8 border-opacity-100 border-theme-bronze relative h-1/3 w-full overflow-hidden rounded-xl">
                     <div
-                        class="absolute left-0 top-0 h-full w-0 bg-green-500" id = "loading_bar"></div>
+                        class="rounded-none absolute left-2 top-0 h-1/2 mt-2 ml-5 w-0 bg-theme-bronze" id = "loading_bar"></div>
                 </div>
                 <p class="text-theme-halfw mt-4 text-4xl" id="loading">
                     Loading.
@@ -59,10 +59,10 @@
             }
         }
 
-        // fetch("/parse_text")
-        //     .then((v) => v.json())
-        //     .then((j) => {
-        //         window.location.href = "/game?" + jQuery.param(j);
-        //     });
+        fetch("/parse_text")
+            .then((v) => v.json())
+            .then((j) => {
+                window.location.href = "/game?" + jQuery.param(j);
+            });
     </script>
 {% endblock %}
