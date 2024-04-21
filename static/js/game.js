@@ -95,6 +95,7 @@ $(function () {
     }
 
     function show_correct_answer() {
+        clearInterval(game_interval);
         let full_card_elements = $("[id^=full_card_]");
         for (let i = 0; i < 4; ++i) {
             if (question == question_set[i]) {
@@ -105,11 +106,16 @@ $(function () {
         }
 
         setTimeout((_) => {
+            hammers[0][0].remove();
+            hammers = [];
+
             create_new_hammer();
             set_next_question_set();
 
             full_card_elements.removeClass("!border-green-800");
             full_card_elements.removeClass("!border-red-800");
+
+            game_interval = setInterval(game_loop, 25);
         }, 1000);
     }
 
@@ -174,13 +180,13 @@ $(function () {
 
         if (question == question_set[idx]) {
             correct_audio.play();
-            hammers[0][0].remove();
-            hammers = [];
+
+            hammers[0][0].find("img")[0].src = "/static/assets/hammer_break.gif";
 
             num_correct += 1;
-            if (num_lives != 0) {
-                show_correct_answer();
-            }
+
+            show_correct_answer();
+
         } else {
             if (fast_interval != null) {
                 clearInterval(fast_interval);
