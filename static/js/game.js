@@ -125,25 +125,32 @@ $(function () {
     function handle_game_over() {
         crab_element.find("img")[0].src = "/static/assets/explosion.png";
 
-        let popup = new Popup({
+        Swal.fire({
             title: "Game Over",
-            content: `
-                You lost!
+            html: `
+            <div class="flex flex-col items-center">
+            <div class="mb-4">
                 You answer ${num_correct} terms correctly
-                ${wrong_questions.map(([k, v]) => `${k} => ${v}`).join("\n")}
-            `,
-            hideCallback: () => {
-                setTimeout(() => {
-                    crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
-                    num_lives = max_lives;
-                    create_new_hammer();
-                    wrong_questions = [];
-                    set_next_question_set();
-                }, 500);
-            }
-        });
-        popup.show();
+            </div>
+            <div class="mb-2">
+                Keep reviewing the following terms:
+            </div>
+            <ul>
+            ${wrong_questions.map(([k, v]) => `<li class="text-left"><a class="font-semibold">${k}</a>: ${v}</li>`).join("\n")}
+            </ul>
+            </div>`,
+            icon: "info",
+            confirmButtonText: "Play Again?"
+        }).then((_) => {
+            setTimeout(() => {
+                crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+                num_lives = max_lives;
+                create_new_hammer();
+                wrong_questions = [];
+                set_next_question_set();
+            }, 200);
 
+        });
     }
 
     $("[id^=full_card_]").on("click", function (_) {
