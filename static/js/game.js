@@ -38,6 +38,10 @@ $(function () {
 
         let random_keys = [];
 
+        if (question_set.length < 4) {
+            return;
+        }
+        
         while (random_keys.length != 4) {
             let random_key = keys[(keys.length * Math.random()) << 0];
             if (!random_keys.includes(random_key)) {
