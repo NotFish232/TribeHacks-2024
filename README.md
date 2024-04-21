@@ -1,5 +1,5 @@
 # <center>Forge: An Educational Tool</center>
-![](/static/assets/crab_crush.gif =250x500)
+![](/static/assets/crab_idle.gif)
 
 <center>Level up your studying by playing interactive trivia games
 
