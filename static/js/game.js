@@ -173,6 +173,10 @@ $(function () {
                 show_correct_answer();
             }
         } else {
+            if (fast_interval != null) {
+                clearInterval(fast_interval);
+                fast_interval = null;
+            }
             fast_interval = setInterval(update_hammer_locations, 5);
         }
 
@@ -189,6 +193,7 @@ $(function () {
                 clearInterval(game_interval);
                 if (fast_interval != null) {
                     clearInterval(fast_interval);
+                    fast_interval = null;
                 }
 
                 crab_element.find("img")[0].src = "/static/assets/crab_death.gif";
