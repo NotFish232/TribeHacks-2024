@@ -10,6 +10,7 @@ $(function () {
     bowling_audio.playbackRate = 1.5;
     let bonk_audio = new Audio("/static/assets/bonk.mp3");
     bonk_audio.playbackRate = 0.6;
+    let correct_audio = new Audio("/static/assets/correct_answer.mp3");
 
     let num_correct = 0;
 
@@ -170,6 +171,7 @@ $(function () {
 
 
         if (question == question_set[idx]) {
+            correct_audio.play();
             hammers[0][0].remove();
             hammers = [];
 
