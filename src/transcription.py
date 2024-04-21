@@ -1,6 +1,6 @@
 from openai import OpenAI
 import time
-from keywords import text_to_keywords
+from .generator import text_to_keywords
 
 def audio_to_text(path) -> str:
     client = OpenAI()

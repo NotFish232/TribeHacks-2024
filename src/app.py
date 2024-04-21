@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 import json
 import os
-from keywords import text_to_keywords
-from transcription import audio_to_text
+from .generator import text_to_keywords
+from .transcription import audio_to_text
 import fleep
 
 template_dir = os.path.abspath("./templates")
