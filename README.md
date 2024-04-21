@@ -1,6 +1,6 @@
 # Forge: An Educational Tool
 <p align="center">
-    <img src="/static/assets/crab_idle.gif" width="250px"/>
+    <img src="/static/assets/crab_idle.gif" width="350px"/>
 </p>
 
 
