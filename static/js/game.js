@@ -7,6 +7,9 @@ $(function () {
     let lives_element = $("#lives");
     let crab_element = $("#crab");
 
+    let bonk_audio = new Audio("/static/assets/bonk.mp3");
+    bonk_audio.playbackRate = 0.6;
+
     let num_correct = 0;
 
     let question_set;
@@ -180,7 +183,9 @@ $(function () {
         update_hammer_locations();
 
         for (let [hammer, _x, _y, _r] of hammers) {
-            if (are_colliding(crab_element, hammer)) {
+            if (are_colliding(crab_element, hammer)) {                
+                bonk_audio.play();
+
                 clearInterval(game_interval);
                 if (fast_interval != null) {
                     clearInterval(fast_interval);
@@ -231,6 +236,31 @@ $(function () {
 
     set_next_question_set();
 
-    let game_interval = setInterval(game_loop, 25);
     let fast_interval = null;
+    let game_interval;
+
+    Swal.fire({
+        title: "Ready to Play?",
+        html: `
+        <div class="flex flex-col items-center">
+        <div>
+        <img src="/static/assets/crab.png">
+        <div>
+        <div class="my-4">
+            This is Clawdius the crab. Some unknown nefarius individual moved Clawdius to a beach with falling hammers! 
+            To protect Clawdius from imminent death, you must answer these questions correctly! Good luck.
+        </div>
+        </div>`,
+        confirmButtonText: "Start Game",
+    }).then(() => {
+        let backtrack = new Audio("/static/assets/backtrack.wav");
+        backtrack.loop = true;
+        backtrack.play();
+
+        let waves = new Audio("/static/assets/waves.mp3");  
+        waves.loop = true;
+        waves.play();
+
+        game_interval = setInterval(game_loop, 25);
+    });
 });
