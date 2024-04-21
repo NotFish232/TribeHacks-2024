@@ -253,7 +253,7 @@ $(function () {
         </div>`,
         confirmButtonText: "Start Game",
     }).then(() => {
-        let backtrack = new Audio("/static/assets/backtrack.wav");
+        let backtrack = new Audio("/static/assets/backtrack.mp3");
         backtrack.loop = true;
         backtrack.play();
 
