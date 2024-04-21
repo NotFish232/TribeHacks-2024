@@ -6,3 +6,4 @@ static/css/tailwind.css
 jsconfig.json
 filename.txt
 user_text.txt
+*.pyc
