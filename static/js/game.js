@@ -84,7 +84,10 @@ $(function () {
     function update_hammer_locations() {
         for (let i = 0; i < hammers.length; ++i) {
             let [hammer_element, x, y, rotation] = hammers[i];
-            hammer_element.css("transform", `translate(${x}px, ${y}px) rotate(${rotation}deg)`);
+            hammer_element.css(
+                "transform",
+                `translate(${x}px, ${y}px) rotate(${rotation}deg)`,
+            );
 
             hammers[i][2] += 1;
             hammers[i][3] -= 0.2;
@@ -149,16 +152,16 @@ $(function () {
             ${wrong_questions.map(([k, v]) => `<li class="text-left"><a class="font-semibold">${k}</a>: ${v}</li>`).join("\n")}
             </ul>
             </div>`,
-            confirmButtonText: "Play Again?"
+            confirmButtonText: "Play Again?",
         }).then((_) => {
             setTimeout(() => {
-                crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+                crab_element.find("img")[0].src =
+                    "/static/assets/crab_idle.gif";
                 num_lives = max_lives;
                 create_new_hammer();
                 wrong_questions = [];
                 set_next_question_set();
             }, 200);
-
         });
     }
 
@@ -166,9 +169,8 @@ $(function () {
         if (fast_interval != null) {
             return;
         }
-        
-        let idx = parseInt($(this).attr("id").slice(-1)) - 1;
 
+        let idx = parseInt($(this).attr("id").slice(-1)) - 1;
 
         if (question == question_set[idx]) {
             correct_audio.play();
@@ -186,15 +188,13 @@ $(function () {
             }
             fast_interval = setInterval(update_hammer_locations, 5);
         }
-
-
     });
 
     function game_loop() {
         update_hammer_locations();
 
         for (let [hammer, _x, _y, _r] of hammers) {
-            if (are_colliding(crab_element, hammer)) {                
+            if (are_colliding(crab_element, hammer)) {
                 bonk_audio.play();
 
                 clearInterval(game_interval);
@@ -203,17 +203,21 @@ $(function () {
                     fast_interval = null;
                 }
 
-                crab_element.find("img")[0].src = "/static/assets/crab_death.gif";
+                crab_element.find("img")[0].src =
+                    "/static/assets/crab_death.gif";
 
                 let full_card_elements = $("[id^=full_card_]");
                 for (let i = 0; i < 4; ++i) {
                     if (question == question_set[i]) {
-                        $(full_card_elements.get(i)).addClass("!border-green-800");
+                        $(full_card_elements.get(i)).addClass(
+                            "!border-green-800",
+                        );
                     } else {
-                        $(full_card_elements.get(i)).addClass("!border-red-800");
+                        $(full_card_elements.get(i)).addClass(
+                            "!border-red-800",
+                        );
                     }
                 }
-
 
                 setTimeout(() => {
                     full_card_elements.removeClass("!border-green-800");
@@ -234,11 +238,11 @@ $(function () {
                         set_next_question_set();
                     }
 
-                    crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+                    crab_element.find("img")[0].src =
+                        "/static/assets/crab_idle.gif";
 
                     game_interval = setInterval(game_loop, 10);
                 }, 1000);
-
             }
         }
 
