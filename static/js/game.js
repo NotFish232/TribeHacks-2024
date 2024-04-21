@@ -268,10 +268,6 @@ $(function () {
         backtrack.loop = true;
         backtrack.play();
 
-        let waves = new Audio("/static/assets/waves.mp3");  
-        waves.loop = true;
-        waves.play();
-
         game_interval = setInterval(game_loop, 25);
     });
 });
