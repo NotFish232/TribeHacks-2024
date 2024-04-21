@@ -4,3 +4,6 @@ static/css/tailwind.css
 .env
 *.wav
 jsconfig.json
+filename.txt
+user_text.txt
+*.pyc

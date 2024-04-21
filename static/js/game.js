@@ -26,7 +26,7 @@ $(function () {
         var rect2 = el2[0].getBoundingClientRect();
 
         return !(
-            rect1.top > rect2.bottom - 200||
+            rect1.top > rect2.bottom - 200 ||
             rect1.right < rect2.left ||
             rect1.bottom < rect2.top + 200 ||
             rect1.left > rect2.right
@@ -125,50 +125,56 @@ $(function () {
     function handle_game_over() {
         crab_element.find("img")[0].src = "/static/assets/explosion.png";
 
-        let popup = new Popup({
+        Swal.fire({
             title: "Game Over",
-            content: `
-                You lost!
+            html: `
+            <div class="flex flex-col items-center">
+            <div>
+            <img src="/static/assets/crab_puddle.png">
+            <div>
+            <div class="mb-4">
                 You answer ${num_correct} terms correctly
-                ${wrong_questions.map(([k, v]) => `${k} => ${v}`).join("\n")}
-            `,
-            hideCallback: () => {
-                setTimeout(() => {
-                    crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
-                    num_lives = max_lives;
-                    create_new_hammer();
-                    wrong_questions = [];
-                    set_next_question_set();
-                }, 500);
-            }
-        });
-        popup.show();
+            </div>
+            <div class="mb-2">
+                Keep reviewing the following terms:
+            </div>
+            <ul>
+            ${wrong_questions.map(([k, v]) => `<li class="text-left"><a class="font-semibold">${k}</a>: ${v}</li>`).join("\n")}
+            </ul>
+            </div>`,
+            confirmButtonText: "Play Again?"
+        }).then((_) => {
+            setTimeout(() => {
+                crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+                num_lives = max_lives;
+                create_new_hammer();
+                wrong_questions = [];
+                set_next_question_set();
+            }, 200);
 
+        });
     }
 
     $("[id^=full_card_]").on("click", function (_) {
         let idx = parseInt($(this).attr("id").slice(-1)) - 1;
 
-        hammers[0][0].remove();
-        hammers = [];
 
         if (question == question_set[idx]) {
+            hammers[0][0].remove();
+            hammers = [];
+
             streak += 1;
             num_correct += 1;
-        } else {
-            wrong_questions.push([question, answer]);
-            num_lives -= 1;
-            if (num_lives == 0) {
-                handle_game_over();
+            if (num_lives != 0) {
+                show_correct_answer();
             }
-            streak = 0;
+
+            streak_element.innerHTML = `Streak: ${streak}`;
+        } else {
+            fast_interval = setInterval(update_hammer_locations, 5);
         }
 
-        if (num_lives != 0) {
-            show_correct_answer();
-        }
 
-        streak_element.innerHTML = `Streak: ${streak}`;
     });
 
     function game_loop() {
@@ -176,19 +182,47 @@ $(function () {
 
         for (let [hammer, _x, _y, _r] of hammers) {
             if (are_colliding(crab_element, hammer)) {
-                wrong_questions.push([question, answer]);
-                hammers[0][0].remove();
-                hammers = [];
-                num_lives -= 1;
-                if (num_lives == 0) {
-                    handle_game_over();
-                } else {
-                    show_correct_answer();
+                clearInterval(game_interval);
+                if (fast_interval != null) {
+                    clearInterval(fast_interval);
                 }
 
-                streak = 0;
-                streak_element.innerHTML = `Streak: ${streak}`;
+                crab_element.find("img")[0].src = "/static/assets/crab_death.gif";
 
+                let full_card_elements = $("[id^=full_card_]");
+                for (let i = 0; i < 4; ++i) {
+                    if (question == question_set[i]) {
+                        $(full_card_elements.get(i)).addClass("!border-green-800");
+                    } else {
+                        $(full_card_elements.get(i)).addClass("!border-red-800");
+                    }
+                }
+
+
+                setTimeout(() => {
+                    full_card_elements.removeClass("!border-green-800");
+                    full_card_elements.removeClass("!border-red-800");
+
+                    wrong_questions.push([question, answer]);
+
+                    hammers[0][0].remove();
+                    hammers = [];
+
+                    num_lives -= 1;
+
+                    if (num_lives == 0) {
+                        handle_game_over();
+                    } else {
+                        create_new_hammer();
+                        set_next_question_set();
+                    }
+
+                    streak = 0;
+                    streak_element.innerHTML = `Streak: ${streak}`;
+                    crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
+
+                    game_interval = setInterval(game_loop, 10);
+                }, 1000);
 
             }
         }
@@ -201,4 +235,5 @@ $(function () {
     set_next_question_set();
 
     let game_interval = setInterval(game_loop, 10);
+    let fast_interval = null;
 });
