@@ -3,7 +3,6 @@ $(function () {
 
     let question_element = $("#question");
     let card_elements = $("[id^=card_]");
-    let hammers_element = $("#hammers");
     let lives_element = $("#lives");
     let crab_element = $("#crab");
 
@@ -66,17 +65,17 @@ $(function () {
 
     function create_new_hammer() {
         let hammer_element = $(
-            `<div class="left-[50%] top-[20%] absolute h-96 w-96"><img src="/static/assets/hammer.png"></div>`,
+            `<div class="left-[40%] top-[5%] absolute h-96 w-96"><img src="/static/assets/hammer.png"></div>`,
         );
 
-        let x = 350;
+        let x = 0; //350;
         let y = 0;
         let rotation = 180;
 
         hammer_element.css("transform", `translate(${x}px, ${y}px)`);
 
         hammers.push([hammer_element, x, y, rotation]);
-        hammers_element.append(hammer_element);
+        $("#container").append(hammer_element);
     }
 
     function update_hammer_locations() {
