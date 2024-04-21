@@ -3,11 +3,10 @@
     <div
         class="flex-col h-[94vh] bg-cover bg-center bg-theme-prussian">
         <img
-            class="mx-auto pt-5 h-[23vh]"
+            class="mx-auto pt-10 h-[23vh]"
             src="{{ url_for('static', filename='assets/Logo_Text.png') }}" />
         <div
-            class="bg-theme-ar tic grid-flow-* container mx-auto flex h-3/4 w-2/5 flex-col items-center justify-center rounded-3xl border-0 border-theme-bronze bg-opacity-0"
-            style="margin: auto;">
+            class="bg-theme-ar tic grid-flow-* container mx-auto flex h-3/4 w-2/5 flex-col items-center justify-center rounded-3xl border-0 border-theme-bronze bg-opacity-0">
             <img class="h-1/2" src="/static/assets/Crab_Loading.gif" />
             <div
                 class="flex  h-1/6 w-full flex-col items-center justify-center rounded-2xl bg-opacity-0">
@@ -17,7 +16,7 @@
                         class="rounded-sm top-0 h-1/2 my-auto ml-0 w-0 bg-theme-bronze" id = "loading_bar"></div>
                 </div>
                 <p class="text-theme-bronze mt-4 text-4xl font-custom" id="loading">
-                    Loading.
+                    Loading Text.
                 </p>
             </div>
         </div>
@@ -25,7 +24,7 @@
     <div class="bg-theme-bronze h-[6vh] w-full"></div>
 
     <script>
-        var text = ["Loading.", "Loading..", "Loading..."];
+        var text = ["Loading Text.", "Loading Text..", "Loading Text..."];
         var counter = 0;
         var elem = document.getElementById("loading");
         var inst = setInterval(change, 1000);
@@ -49,19 +48,23 @@
                     width+=1;
                     
                 }
+                else if((width | 0)==50)
+                {
+                    text = ["Extracting Keywords.", "Extracting Keywords..", "Extracting Keywords..."]
+                }
                 else if((width | 0)==85)  
                     inc = .01
-                    else if((width | 0)==92)  
+                else if((width | 0)==92)  
                     inc = .001
                 width+=inc;
                 bar.style.width = width + "%";
             }
         }
 
-        fetch("/parse_text")
-            .then((v) => v.json())
-            .then((j) => {
-                window.location.href = "/game?" + jQuery.param(j);
-            });
+        // fetch("/parse_text")
+        //     .then((v) => v.json())
+        //     .then((j) => {
+        //         window.location.href = "/game?" + jQuery.param(j);
+        //     });
     </script>
 {% endblock %}
