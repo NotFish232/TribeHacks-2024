@@ -45,6 +45,8 @@ def parse_text() -> str:
         json.dump(keyword_pairs, f)
     return "text parsed"
 
+
+
 @app.route("/game", methods=["GET"])
 def game_page() -> str:
     j = json.load(open("demo.json"))
