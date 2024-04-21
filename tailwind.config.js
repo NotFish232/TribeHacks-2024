@@ -4,6 +4,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                "theme-halfw":"#ecf0f1",
                 "theme-artic": "#b0c0c7",
                 "theme-steel": "#3a6383",
                 "theme-slate": "#2f4253",

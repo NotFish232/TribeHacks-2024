@@ -4,19 +4,21 @@
     <img class="h-[15vh] ml-3"  src="{{url_for('static', filename='assets/Logo_Full.png')}}">
     <div class="container mx-auto flex flex-col items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-3/5 bg-theme-artic grid-flow-*" style="margin: auto; margin-top:3%;">
          
-        <input class="mx-8 mt-16 border-8 border-theme-slate rounded-3xl w-4/5 h-1/2 align-text-top text-3xl placeholder-theme-steel text-theme-slate" placeholder="Enter lecture text here...">
-
-        </input>
-        <br>
-        <h1>----------OR----------</h1>
-        <br>
-        <!-- <input type = "file" title=" " class="bg-theme-artic  mt-4 border-8 border-theme-slate rounded-3xl w-3/5 h-1/6 text-center text-4xl flex items-center justify-center" style="position: relative;"/> -->
-            <!-- insert like the file upload button here -->
+        <form action="/loading" method="post" class="m-auto h-full w-full items-center justify-center" enctype="multipart/form-data">
+            <textarea class="p-5  placeholder:text-center focus:outline-none mx-8 mt-16 border-8 border-theme-slate rounded-3xl w-4/5 h-1/2 align-text-top text-3xl placeholder-theme-steel text-theme-slate" placeholder="Enter lecture text here..."></textarea>
+            <br>
+            <p1 class="text-4xl">---------------OR---------------</p1>
+            <br>
+            <!-- <input type = "file" title=" " class="bg-theme-artic  mt-4 border-8 border-theme-slate rounded-3xl w-3/5 h-1/6 text-center text-4xl flex items-center justify-center" style="position: relative;"/> -->
+                <!-- insert like the file upload button here -->
+                
+                <!-- <img class="-ml-5 mr-9 h-[7vh] w-[7vh]"  src="{{url_for('static', filename='assets/Attachment_Icon.png')}}"> -->
             
-            <!-- <img class="-ml-5 mr-9 h-[7vh] w-[7vh]"  src="{{url_for('static', filename='assets/Attachment_Icon.png')}}"> -->
-        
-<input accept=".txt, .wav" class="text-3xl block w-3/5 h-1/6 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
-
+            <input accept=".txt, .wav" class=" text-3xl block w-3/5 h-12 
+            file:bg-theme-slate file:hover:bg-theme-prussian file:text-theme-halfw file:py-3 file:-ml-1 file:-my-3 file:mr-3 file:border-0 dark:bg-white dark:text-theme-steel
+            border-theme-slate hover:border-theme-prussian border-4 rounded-2xl cursor-pointer  focus:outline-none" id="file_input" type="file">
+            <input type="submit" class = "button" value="Submit">
+        </form>
     </div>
     
 </div>
