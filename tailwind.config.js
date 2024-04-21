@@ -11,6 +11,10 @@ module.exports = {
                 "theme-prussian": "#15212d",
                 "theme-bronze": "#d09a6e",
             },
+            fontFamily:
+            {
+                'custom' : ['Nohemi', 'sans-serif']
+            },
         },
     },
     plugins: [],
