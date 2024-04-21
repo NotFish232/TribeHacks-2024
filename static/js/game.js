@@ -6,6 +6,8 @@ $(function () {
     let lives_element = $("#lives");
     let crab_element = $("#crab");
 
+    let bowling_audio = new Audio("/static/assets/wii_bowling.mp3");
+    bowling_audio.playbackRate = 1.5;
     let bonk_audio = new Audio("/static/assets/bonk.mp3");
     bonk_audio.playbackRate = 0.6;
 
@@ -223,6 +225,7 @@ $(function () {
                     num_lives -= 1;
 
                     if (num_lives == 0) {
+                        bowling_audio.play();
                         handle_game_over();
                     } else {
                         create_new_hammer();
