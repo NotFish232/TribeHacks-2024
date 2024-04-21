@@ -15,7 +15,7 @@
                 <div
                     class="bg-theme-artic relative h-1/3 w-full overflow-hidden rounded-xl">
                     <div
-                        class="absolute left-0 top-0 h-full w-1/2 bg-green-500"></div>
+                        class="absolute left-0 top-0 h-full w-0 bg-green-500"></div>
                 </div>
                 <p class="text-theme-halfw mt-4 text-4xl" id="loading">
                     Loading.
@@ -34,6 +34,17 @@
         function change() {
             counter = (counter + 1) % text.length;
             elem.innerHTML = text[counter];
+        }
+        var bar = document.getElementById("loading_bar");
+        var width = 1;
+        var id = setInterval(frame, 100);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                bar.style.width = width + "%";
+            }
         }
 
         fetch("/parse_text")
