@@ -16,13 +16,14 @@ def main_page() -> str:
 
 @app.route("/loading", methods=["POST"])
 def loading_page() -> str:
-    if "file" in request.files:  # File option
+    print(request.files)
+    if request.files["file_input"]:  # File option
         file = request.files["file_input"]
         print("test2")
         # Check the file type (content type)
         # content_type = magic.from_buffer(file.read(2048), mime=True)
-        file.save("../static/assets/" + file.filename)
-        with open("filename.txt", "w") as txt_file:
+        file.save(file.filename)
+        with open("filename.txt", "w+") as txt_file:
             txt_file.write(file.filename)
     else:  # Text option
         print("test")
@@ -33,9 +34,11 @@ def loading_page() -> str:
             txt_file.write("user_text.txt")
     return render_template("loading.html")
 
+
 @app.route("/loading2")
 def parse_text2() -> str:
     return render_template("loading.html")
+
 
 @app.route("/parse_text")
 def parse_text() -> str:
