@@ -26,5 +26,4 @@ On the asset side, we learned animation with Photoshop and how to make music. On
 We want to make more types of games, such as a Monopoly-like board game or a memory-matching game. We could also implement many quality-of-life features in the future, such as saving the data, sharing with friends, and leaderboards.
 
 #### Built With
-`flask` `html5` `javascript` `jquery` `openai` \
-`photoshop` `python` `tailwind` `whisper`
+`flask` `html5` `javascript` `jquery` `openai` `photoshop` `python` `tailwind` `whisper`
