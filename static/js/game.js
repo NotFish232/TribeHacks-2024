@@ -129,6 +129,9 @@ $(function () {
             title: "Game Over",
             html: `
             <div class="flex flex-col items-center">
+            <div>
+            <img src="/static/assets/crab_puddle.png">
+            <div>
             <div class="mb-4">
                 You answer ${num_correct} terms correctly
             </div>
@@ -139,7 +142,6 @@ $(function () {
             ${wrong_questions.map(([k, v]) => `<li class="text-left"><a class="font-semibold">${k}</a>: ${v}</li>`).join("\n")}
             </ul>
             </div>`,
-            icon: "info",
             confirmButtonText: "Play Again?"
         }).then((_) => {
             setTimeout(() => {
