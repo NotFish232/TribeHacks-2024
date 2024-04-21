@@ -1,35 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="bg-cover bg-center h-[94vh]" style="background-image:url('static/assets/Website_P1_Blank.png')">
-    <img class="h-[15vh] ml-3"  src="{{url_for('static', filename='assets/Logo_Full.png')}}">
-    <div class="container mx-auto bg-opacity-0 flex flex-col items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-3/4 bg-theme-artic grid-flow-*" style="margin: auto; margin-top:3%;">
-        <img class="w-1/2 h-1/2" src="/static/assets/crab_idle.gif" />
-        <div class="bg-opacity-0  w-full h-1/6 rounded-2xl flex flex-col items-center justify-center">
-            <div class="relative bg-theme-artic w-full h-1/3 rounded-xl overflow-hidden">
-                <div class="absolute top-0 left-0 h-full bg-green-500 w-1/2"></div>
+    <div
+        class="h-[94vh] bg-cover bg-center"
+        style="background-image:url('static/assets/Website_P1_Blank.png')">
+        <img
+            class="ml-3 h-[15vh]"
+            src="{{ url_for('static', filename='assets/Logo_Full.png') }}" />
+        <div
+            class="bg-theme-artic grid-flow-* container mx-auto flex h-3/4 w-2/5 flex-col items-center justify-center rounded-3xl border-0 border-indigo-50 bg-opacity-0"
+            style="margin: auto; margin-top:3%;">
+            <img class="h-1/2 w-1/2" src="/static/assets/crab_idle.gif" />
+            <div
+                class="flex  h-1/6 w-full flex-col items-center justify-center rounded-2xl bg-opacity-0">
+                <div
+                    class="bg-theme-artic relative h-1/3 w-full overflow-hidden rounded-xl">
+                    <div
+                        class="absolute left-0 top-0 h-full w-1/2 bg-green-500"></div>
+                </div>
+                <p class="text-theme-halfw mt-4 text-4xl" id="loading">
+                    Loading.
+                </p>
             </div>
-            <p class="mt-4 text-4xl text-theme-halfw" id = "loading">Loading.</p>
         </div>
-        
     </div>
-    
-</div>
-<div class="h-[6vh] w-full bg-theme-bronze"></div>
+    <div class="bg-theme-bronze h-[6vh] w-full"></div>
 
-<script>
-    var text = ["Loading.", "Loading..", "Loading..."];
-    var counter = 0;
-    var elem = document.getElementById("loading");
-    var inst = setInterval(change, 1000);
+    <script>
+        var text = ["Loading.", "Loading..", "Loading..."];
+        var counter = 0;
+        var elem = document.getElementById("loading");
+        var inst = setInterval(change, 1000);
 
-    function change() {
-        counter = (counter + 1) % text.length;
-        elem.innerHTML = text[counter];
-    }
+        function change() {
+            counter = (counter + 1) % text.length;
+            elem.innerHTML = text[counter];
+        }
 
-    function navigate() {
-        window.location.href = 'game';  // Redirects user to the /map route when 'create_map' is finished
-    }
-    fetch('parse_text').then(navigate); // Performing 'create_map' and then calls navigate() function, declared above
-</script>
+        fetch("/parse_text")
+            .then((v) => v.json())
+            .then((j) => {
+                window.location.href = "/game?" + jQuery.param(j);
+            });
+    </script>
 {% endblock %}
