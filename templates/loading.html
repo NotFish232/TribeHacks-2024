@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="bg-cover bg-center h-[92vh]" style="background-image:url('static/assets/Website_P1_Blank.png')">
-    <div class="flex items-center justify-center border-indigo-50 rounded-3xl border-0 w-2/5 h-2/5 bg-theme-artic">
-        Loading...
+    <div
+        class="h-[92vh] bg-cover bg-center"
+        style="background-image:url('static/assets/Website_P1_Blank.png')">
+        <div
+            class="bg-theme-artic flex h-2/5 w-2/5 items-center justify-center rounded-3xl border-0 border-indigo-50">
+            Loading...
+        </div>
     </div>
-</div>
-<div class="h-[8vh] w-full bg-theme-bronze"></div>
-<script>
-    function navigate() {
-        window.location.href = 'game';  
-    }
-    fetch('/parse_text').then(navigate);
-</script>
+    <div class="bg-theme-bronze h-[8vh] w-full"></div>
+    <script>
+        fetch("/parse_text")
+            .then((v) => v.json())
+            .then((j) => {
+                window.location.href= "/game?" + jQuery.param(j);
+            });
+    </script>
 {% endblock %}
