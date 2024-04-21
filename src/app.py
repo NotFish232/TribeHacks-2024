@@ -51,10 +51,7 @@ def parse_text() -> str:
     #     json.dump(keyword_pairs, f)
     return keyword_pairs
 
+
 @app.route("/game", methods=["GET"])
 def game_page() -> str:
     return render_template("game.html", data=json.dumps(request.args))
-
-
-if __name__ == "__main__":
-    app.run("127.0.0.1", 8080)
