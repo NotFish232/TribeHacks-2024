@@ -1,5 +1,7 @@
-# <center>Forge: An Educational Tool</center>
-![](/static/assets/crab_idle.gif)
+# Forge: An Educational Tool
+<p align="center">
+    <img src="/static/assets/crab_idle.gif" width="250px"/>
+</p>
 
 
 ### Inspiration
