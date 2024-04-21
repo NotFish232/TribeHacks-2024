@@ -33,6 +33,9 @@ def loading_page() -> str:
             txt_file.write("user_text.txt")
     return render_template("loading.html")
 
+@app.route("/loading2")
+def parse_text2() -> str:
+    return render_template("loading.html")
 
 @app.route("/parse_text")
 def parse_text() -> str:
