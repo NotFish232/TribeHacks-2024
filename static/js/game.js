@@ -161,6 +161,10 @@ $(function () {
     }
 
     $("[id^=full_card_]").on("click", function (_) {
+        if (fast_interval != null) {
+            return;
+        }
+        
         let idx = parseInt($(this).attr("id").slice(-1)) - 1;
 
 
