@@ -6,9 +6,7 @@ $(function () {
     let hammers_element = $("#hammers");
     let lives_element = $("#lives");
     let crab_element = $("#crab");
-    let streak_element = $("#streak")[0];
 
-    let streak = 0;
     let num_correct = 0;
 
     let question_set;
@@ -83,8 +81,8 @@ $(function () {
             let [hammer_element, x, y, rotation] = hammers[i];
             hammer_element.css("transform", `translate(${x}px, ${y}px) rotate(${rotation}deg)`);
 
-            hammers[i][2] += 2;
-            hammers[i][3] -= 0.5;
+            hammers[i][2] += 1;
+            hammers[i][3] -= 0.2;
         }
     }
 
@@ -167,13 +165,10 @@ $(function () {
             hammers[0][0].remove();
             hammers = [];
 
-            streak += 1;
             num_correct += 1;
             if (num_lives != 0) {
                 show_correct_answer();
             }
-
-            streak_element.innerHTML = `Streak: ${streak}`;
         } else {
             fast_interval = setInterval(update_hammer_locations, 5);
         }
@@ -221,8 +216,6 @@ $(function () {
                         set_next_question_set();
                     }
 
-                    streak = 0;
-                    streak_element.innerHTML = `Streak: ${streak}`;
                     crab_element.find("img")[0].src = "/static/assets/crab_idle.gif";
 
                     game_interval = setInterval(game_loop, 10);
@@ -238,6 +231,6 @@ $(function () {
 
     set_next_question_set();
 
-    let game_interval = setInterval(game_loop, 10);
+    let game_interval = setInterval(game_loop, 25);
     let fast_interval = null;
 });
