@@ -3,7 +3,6 @@
     <img src="/static/assets/crab_idle.gif" width="350px"/>
 </p>
 
-
 ### Inspiration
 
 The inspiration for this project came from websites such as Quizlet, which uses keywords and definitions to make games. However, it was time-consuming to manually input all the keywords and their definitions, especially for longer lectures. Our vision was to make a way to easily input text or audio and play a fun game based on the generated keywords and definitions.
